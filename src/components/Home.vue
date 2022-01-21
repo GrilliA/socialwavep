@@ -28,15 +28,15 @@ data(){
   }
 },
 created(){
-axios.get("https://api.punkapi.com/v2/beers?page=1&per_page=10")
-      .then(res => {
+
+        axios.get("https://api.punkapi.com/v2/beers?page=1&per_page=10")
+        .then(res => {
         this.info = res.data;
         console.log(this.info)
       })
       .catch(error => {
         console.log(error)
-      })
-    
+      }) 
 },
 mounted() {
   let tl = gsap.timeline()
@@ -51,6 +51,8 @@ updated() {
 methods: {
   goNext(){
     this.pagina = this.pagina+1;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   axios.get("https://api.punkapi.com/v2/beers?page=" + this.pagina + "&per_page=10")
       .then(res => {
         this.info = res.data;
@@ -65,7 +67,8 @@ methods: {
      if(this.pagina > 1 ){
       this.pagina = this.pagina -1;
      }
-
+     document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   axios.get("https://api.punkapi.com/v2/beers?page=" + this.pagina + "&per_page=10")
       .then(res => {
         this.info = res.data;
