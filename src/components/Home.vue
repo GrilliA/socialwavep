@@ -51,12 +51,12 @@ updated() {
 methods: {
   goNext(){
     this.pagina = this.pagina+1;
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
   axios.get("https://api.punkapi.com/v2/beers?page=" + this.pagina + "&per_page=10")
       .then(res => {
         this.info = res.data;
         console.log(this.info)
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
       })
       .catch(error => {
         console.log(error)
@@ -67,11 +67,12 @@ methods: {
      if(this.pagina > 1 ){
       this.pagina = this.pagina -1;
      }
-     document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    
   axios.get("https://api.punkapi.com/v2/beers?page=" + this.pagina + "&per_page=10")
       .then(res => {
         this.info = res.data;
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
         console.log(this.info)
       })
       .catch(error => {
